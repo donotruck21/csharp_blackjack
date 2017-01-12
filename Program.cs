@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApplication
 {
@@ -25,7 +26,7 @@ namespace ConsoleApplication
 
     public class Deck{
 
-        List<object> cards = new List<object>();
+        public List<object> cards = new List<object>();
         public Deck(){
             makeDeck();
         }
@@ -56,6 +57,13 @@ namespace ConsoleApplication
         public void printDeck(){
             Console.WriteLine("[{0}]", string.Join(", ",cards));
         }
+
+        public object dealCard(){
+            object returnCard = cards.First();
+            cards.RemoveAt(0);
+            Console.WriteLine(returnCard);
+            return returnCard;
+        }
     }
 
 
@@ -70,6 +78,8 @@ namespace ConsoleApplication
         {
             Console.WriteLine("Hello World!");
             Deck myDeck = new Deck();
+            myDeck.dealCard();
+            myDeck.dealCard();
             myDeck.printDeck();
         }
     }
